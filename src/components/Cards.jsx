@@ -17,7 +17,6 @@ export default function Cards() {
     try {
       const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=12`);
       const data = await response.json();
-      console.log(data);
       setCards(data.cards);
     } catch (error) {
       console.log(error);
@@ -28,12 +27,22 @@ export default function Cards() {
   useEffect(() => {
     if (deckId !== null && deckId !== undefined) drawCards(deckId);
   }, [deckId]);
-  return (
-    <>
-      <h1>Cards</h1>
-      {cards.map((card) => {
-        return <img key={card.code} src={card.image} alt={`${card.value} of ${card.suit}`}></img>;
-      })}
-    </>
-  );
+
+  if (!cards) {
+    return <h1>Loading</h1>;
+  } else
+    return (
+      <>
+        {cards.map((card) => {
+          return (
+            <img
+              key={card.code}
+              src={card.image}
+              alt={`${card.value} of ${card.suit}`}
+              className="hover:scale-[1.03] transition-[0.3s] shadow-[0_4px_8px_0_rgb(0,0,0,0.2)] rounded-lg bg-transparent"
+            ></img>
+          );
+        })}
+      </>
+    );
 }
