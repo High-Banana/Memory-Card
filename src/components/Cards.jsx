@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 const url = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
 
-export default function Cards({ score, setScore, setIsGameOver }) {
+export default function Cards({ score, setScore, setIsGameOver, bestScore, setBestScore }) {
   const [deckId, setDeckId] = useState(null);
   const [cards, setCards] = useState(null);
   const [cardCode, setCardCode] = useState([]);
@@ -33,6 +33,7 @@ export default function Cards({ score, setScore, setIsGameOver }) {
   function gameLogic(code) {
     if (!cardCode.includes(code)) {
       setScore(score + 1);
+      setBestScore([...bestScore, score + 1]);
       setCardCode([...cardCode, code]);
     } else {
       setIsGameOver(true);
