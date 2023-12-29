@@ -1,8 +1,16 @@
-# React + Vite
+# Memory Card
+A simple card game to test your memory.
+The game is won if the player clicks on 12 cards without clicking on same card twice.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![image](https://github.com/High-Banana/memory-card/assets/138550995/f7bfa809-e7ec-49b1-bd2d-21c7425136a2)# Memory Card
 
-Currently, two official plugins are available:
+## Live preview of project is [here](https://high-banana.github.io/memory-card/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Features
+- Displays best score
+- Animated loading page
+- Uses external API to load the cards
+
+# Technologies used
+- React JS
+- Tailwind CSS
