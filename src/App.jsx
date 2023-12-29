@@ -7,7 +7,7 @@ export default function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState([0]);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [wonGame, setWonGame] = useState(true);
+  const [wonGame, setWonGame] = useState(false);
   return (
     <div className="bg-[#373737] min-h-screen">
       <Score score={score} bestScore={bestScore} setWonGame={setWonGame} />
