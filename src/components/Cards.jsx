@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import Loading from "./Loading";
-import GameLogic from "./GameLogic";
 const url = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
 
 export default function Cards({ score, setScore, setIsGameOver, bestScore, setBestScore }) {
@@ -31,8 +30,6 @@ export default function Cards({ score, setScore, setIsGameOver, bestScore, setBe
   useEffect(() => {
     if (deckId !== null && deckId !== undefined) drawCards(deckId);
   }, [deckId]);
-
-  <GameLogic />;
 
   function gameLogic(code) {
     if (!cardCode.includes(code)) {
