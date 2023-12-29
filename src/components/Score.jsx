@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 
 /* eslint-disable react/prop-types */
-export default function Score({ score, bestScore, setWinGame }) {
+export default function Score({ score, bestScore, setWonGame }) {
   useEffect(() => {
     if (score >= 12) {
-      setWinGame(true);
+      setWonGame(true);
     }
   }, [score]);
   return (
