@@ -2,6 +2,7 @@ import { useState } from "react";
 import Cards from "./components/Cards";
 import Score from "./components/Score";
 import Restart from "./components/Restart";
+import Winner from "./components/Winner";
 
 export default function App() {
   const [score, setScore] = useState(10);
@@ -22,19 +23,15 @@ export default function App() {
           />
         </div>
       ) : isGameOver && !winGame ? (
-        <>
-          <Restart
-            score={score}
-            setScore={setScore}
-            setGameOver={setIsGameOver}
-            bestScore={bestScore}
-            setBestScore={setBestScore}
-          />
-        </>
+        <Restart
+          score={score}
+          setScore={setScore}
+          setGameOver={setIsGameOver}
+          bestScore={bestScore}
+          setBestScore={setBestScore}
+        />
       ) : !isGameOver && winGame ? (
-        <>
-          <h1>Winner</h1>
-        </>
+        <Winner setWinGame={setWinGame} setScore={setScore} />
       ) : null}
     </div>
   );
