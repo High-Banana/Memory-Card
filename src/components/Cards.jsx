@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+const url = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
 
-export default function Cards() {
+export default function Cards({ score, setScore, setIsGameOver }) {
   const [deckId, setDeckId] = useState(null);
   const [cards, setCards] = useState(null);
+  const [cardCode, setCardCode] = useState([]);
+
   useEffect(() => {
-    const url = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
     async function getDeckId() {
       const response = await fetch(url);
       const data = await response.json();
@@ -19,14 +22,28 @@ export default function Cards() {
       const data = await response.json();
       setCards(data.cards);
     } catch (error) {
-      console.log(error);
-      return;
+      return console.log(error);
     }
   }
 
   useEffect(() => {
     if (deckId !== null && deckId !== undefined) drawCards(deckId);
   }, [deckId]);
+
+  function gameLogic(code) {
+    if (!cardCode.includes(code)) {
+      setScore(score + 1);
+      setCardCode([...cardCode, code]);
+    } else {
+      setIsGameOver(true);
+      setCardCode([]);
+    }
+  }
+
+  function shuffleCards(code) {
+    gameLogic(code);
+    if (cards !== null) cards.sort(() => Math.random() - 0.5);
+  }
 
   if (!cards) {
     return <h1>Loading</h1>;
@@ -36,6 +53,7 @@ export default function Cards() {
         {cards.map((card) => {
           return (
             <img
+              onClick={() => shuffleCards(card.code)}
               key={card.code}
               src={card.image}
               alt={`${card.value} of ${card.suit}`}
