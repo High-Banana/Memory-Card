@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+import Loading from "./Loading";
 const url = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
 
 export default function Cards({ score, setScore, setIsGameOver, bestScore, setBestScore }) {
@@ -47,10 +48,10 @@ export default function Cards({ score, setScore, setIsGameOver, bestScore, setBe
   }
 
   if (!cards) {
-    return <h1>Loading</h1>;
+    return <Loading />;
   } else
     return (
-      <>
+      <div className="grid grid-cols-4 gap-7 p-9">
         {cards.map((card) => {
           return (
             <img
@@ -62,6 +63,6 @@ export default function Cards({ score, setScore, setIsGameOver, bestScore, setBe
             ></img>
           );
         })}
-      </>
+      </div>
     );
 }

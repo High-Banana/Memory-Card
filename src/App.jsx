@@ -5,23 +5,21 @@ import Restart from "./components/Restart";
 import Winner from "./components/Winner";
 
 export default function App() {
-  const [score, setScore] = useState(10);
-  const [bestScore, setBestScore] = useState([]);
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState([0]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [winGame, setWinGame] = useState(false);
   return (
     <div className="bg-[#373737] min-h-screen">
       <Score score={score} bestScore={bestScore} setWinGame={setWinGame} />
       {!isGameOver && !winGame ? (
-        <div className="grid grid-cols-4 gap-7 p-9">
-          <Cards
-            score={score}
-            setScore={setScore}
-            setIsGameOver={setIsGameOver}
-            bestScore={bestScore}
-            setBestScore={setBestScore}
-          />
-        </div>
+        <Cards
+          score={score}
+          setScore={setScore}
+          setIsGameOver={setIsGameOver}
+          bestScore={bestScore}
+          setBestScore={setBestScore}
+        />
       ) : isGameOver && !winGame ? (
         <Restart
           score={score}
