@@ -51,7 +51,7 @@ export default function Cards({ score, setScore, setIsGameOver, bestScore, setBe
     return <Loading />;
   } else
     return (
-      <div className="grid grid-cols-4 gap-7 p-9">
+      <div className="grid grid-cols-2 gap-7 p-9 md:grid-cols-3 lg:grid-cols-4">
         {cards.map((card) => {
           return (
             <img
